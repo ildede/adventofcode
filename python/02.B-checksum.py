@@ -3,7 +3,7 @@ print("Start...")
 
 result = 0
 import csv
-with open('code02') as csvfile:
+with open('02.input') as csvfile:
     file_to_be_check = csv.reader(csvfile, delimiter='	')
     for row in file_to_be_check:
         i = 0
