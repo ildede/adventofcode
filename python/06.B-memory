@@ -1,0 +1,46 @@
+#!/usr/bin/python
+from numpy import *
+
+print("Start...")
+
+file_to_be_check = open('06.input')
+row = file_to_be_check.readline()
+memory_array = row.split("	")
+for x in range(0, len(memory_array)):
+    memory_array[x] = int(memory_array[x])
+
+list_of_cycles = list()
+memory_array_in_string = ",".join([str(x) for x in memory_array])
+
+while memory_array_in_string not in list_of_cycles:
+    list_of_cycles.append(memory_array_in_string)
+    pointer = argmax(memory_array)
+    blocks = memory_array[pointer]
+    memory_array[pointer] = 0
+    for x in range(0, blocks):
+        pointer += 1
+        if pointer >= len(memory_array):
+            pointer = 0
+        memory_array[pointer] += 1
+    memory_array_in_string = ",".join([str(x) for x in memory_array])
+print("...find start of loop...")
+print(memory_array_in_string)
+
+cycles = 0
+list_of_cycles = list()
+print(list_of_cycles)
+while memory_array_in_string not in list_of_cycles:
+    list_of_cycles.append(memory_array_in_string)
+    pointer = argmax(memory_array)
+    blocks = memory_array[pointer]
+    memory_array[pointer] = 0
+    for x in range(0, blocks):
+        pointer += 1
+        if pointer >= len(memory_array):
+            pointer = 0
+        memory_array[pointer] += 1
+    memory_array_in_string = ",".join([str(x) for x in memory_array])
+    cycles += 1
+
+print("...End")
+print(cycles)
